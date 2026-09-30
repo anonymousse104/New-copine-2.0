@@ -84,6 +84,11 @@ body {
   padding: 0;
   font-family: "Press Start 2P", monospace;
   color: hsl(0, 100%, 18%);
+  /* On met le papier peint directement sur le mur du fond ! */
+  background-image: url("./Sprite/fond-motif.png");
+  background-repeat: repeat;
+  background-size: 128px 128px;
+  image-rendering: pixelated;
 }
 
 #lock-screen {
@@ -91,10 +96,6 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-image: url("./Sprite/fond-motif.png");
-  background-repeat: repeat;
-  background-size: 128px 128px;
-  image-rendering: pixelated;
 }
 
 #lock-screen-content {
@@ -181,10 +182,6 @@ body {
   align-items: center;
   justify-content: center;
   animation: apparitionDouce 0.5s ease-in-out 0s;
-  background-image: url("./Sprite/fond-motif.png");
-  background-repeat: repeat;
-  background-size: 128px 128px;
-  image-rendering: pixelated;
 }
 
 #welcome-screen-content {
@@ -258,4 +255,86 @@ body {
 
 #main-app {
   min-height: 100vh;
+}
+
+@keyframes apparition {
+  0% {
+    opacity: 0;
+    transform: scale(0.8); /* Un peu plus petit au début */
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1); /* Taille normale à la fin */
+  }
+}
+
+#main-app.apparition-animation {
+  animation: apparition 0.5s ease-in-out 0s;
+}
+
+.tabs-nav {
+  font-family: "Press Start 2P", monospace;
+  font-size: 0.85rem; /* Texte plus grand et lisible */
+  color: #680000;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+
+  /* Dimensions et espacements */
+  min-width: 120px; /* Largeur minimale garantie */
+  min-height: 60px; /* Hauteur confortable pour cliquer */
+  padding: 12px 24px; /* Plus d'air autour du texte */
+  margin: 0 10px; /* Écarte les boutons entre eux */
+
+  /* 9-slice ajusté : on augmente la largeur affichée du cadre */
+  border-image-source: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAyElEQVR4AeyRsQ2DQBAE19+IK6AjErsJunEhtPGhA4vAddg3J/3rHSH5jwAEYsWxh2ZhSdr4OANWCz5YRQ/pE6G2t1oR4NswKEKwSogHYADWOGrJuVuwYBKSGDAcPk143eIlYcL2L4C4BMFhtaoBrRk5e8DLer/aD44Cw4IJzwOeNmGwsLHrhAELJqB0ly5vSRgseKBHMGDBhO1fwIDBYs5Zc/5fMGDBtPeWBzBgsIgQLJioBnDDIkKwin4Cihl5PQNW29x/RV8AAAD//yAv5NEAAAAGSURBVAMAB+zKMeuGRe0AAAAASUVORK5CYII=");
+  border-image-slice: 7 fill;
+  border-image-width: 14px; /* Double la taille des bordures pixelisées */
+  border-image-repeat: stretch;
+
+  image-rendering: pixelated;
+}
+
+#lettre-titre-content {
+  display: flex; /* On fait un inline-flex pour que le contenu soit centré */
+  align-items: center;
+  text-align: center;
+  margin: 0 auto; /* On centre le texte avec auto */
+  justify-content: center;
+  background-image: url("./Sprite/Tittle-main-app.png");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  image-rendering: pixelated;
+  width: 450px;
+  height: 128px; /* Ajuste la hauteur selon ton sprite */
+  transform: translateY(-5px);
+}
+
+#lettre-titre-content h2 {
+  margin: 0;
+}
+
+#lettre-texte-content {
+  /* 1. Ton sprite de fond (on n'y touche pas) */
+  background-image: url("./Sprite/Letter.png");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  image-rendering: pixelated;
+
+  /* 2. Dimensions et centrage de la BOÎTE */
+  width: 900px;
+  margin: 10px auto 0 auto; /* Centre la boîte ET ajoute 20px d'espace au-dessus pour ne pas coller l'autre texte */
+
+  /* 3. Le secret pour que le texte respire (marges intérieures) */
+  padding: 120px 110px 50px 60px;
+  gap: 10px; /* Espace entre les paragraphes */
+  box-sizing: border-box; /* Obligatoire : empêche le padding de déformer tes 800px de base */
+
+  /* 4. Le style du TEXTE */
+  text-align: center;
+  line-height: 1.6; /* Aère les lignes pour rendre la longue lettre plus facile à lire */
+}
+
+#lettre-texte-content p {
+  margin: 0;
 }

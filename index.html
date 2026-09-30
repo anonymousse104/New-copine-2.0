@@ -33,7 +33,7 @@
         <h2>Bienvenue mon coeur !</h2>
       </div>
     </section>
-    <section id="main-app" class="hidden">
+    <section id="main-app" class="hidden apparition-animation">
       <nav class="main-nav">
         <!-- Onglets -->
         <button id="tabs-lettres" class="tabs-nav" data-tabs="lettres">
@@ -53,9 +53,13 @@
       <div id="historique-jours"></div>
       <!-- Conteneur des onglets -->
       <div id="lettres" class="tabs-content">
-        <h2>Lettre d'amour</h2>
+        <div id="lettre-titre-content">
+          <h2>Lettre d'amour</h2>
+        </div>
         <p id="lettre-titre">Voici tes lettres d'amour...</p>
-        <p id="lettre-texte"></p>
+        <div id="lettre-texte-content">
+          <p id="lettre-texte"></p>
+        </div>
       </div>
       <div id="musique" class="tabs-content hidden">
         <h2>Musique</h2>
