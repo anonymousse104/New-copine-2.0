@@ -1,0 +1,261 @@
+.hidden {
+  display: none !important;
+}
+
+/* Fond semi-transparent couvrant tout l'écran */
+.modale {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+/* Boîte blanche centrale */
+.modale-contenu {
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  position: relative;
+  max-width: 400px;
+  width: 90%;
+  color: #333;
+}
+
+.fermer-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.aide-btn {
+  position: fixed;
+  bottom: 20px; /* Distance par rapport au bas */
+  right: 20px; /* Distance par rapport à la droite */
+  width: 45px;
+  height: 45px;
+  border-radius: 50%; /* Cercle parfait */
+  border: 2px solid #333;
+  background-color: #ffffff;
+  color: #333;
+  font-size: 1.3rem;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  z-index: 50; /* Reste au-dessus du reste du contenu */
+  animation: boutonAide 0.5s ease-in-out 0s;
+}
+
+.aide-btn:hover {
+  transform: scale(1.1); /* Petit effet de zoom au survol */
+}
+
+.bouton-pixel-perso {
+  font-family: "Press Start 2P", monospace;
+  font-size: 0.85rem; /* Texte plus grand et lisible */
+  color: #680000;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+
+  /* Dimensions et espacements */
+  min-width: 120px; /* Largeur minimale garantie */
+  min-height: 60px; /* Hauteur confortable pour cliquer */
+  padding: 12px 24px; /* Plus d'air autour du texte */
+  margin: 0 10px; /* Écarte les boutons entre eux */
+
+  /* 9-slice ajusté : on augmente la largeur affichée du cadre */
+  border-image-source: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAyElEQVR4AeyRsQ2DQBAE19+IK6AjErsJunEhtPGhA4vAddg3J/3rHSH5jwAEYsWxh2ZhSdr4OANWCz5YRQ/pE6G2t1oR4NswKEKwSogHYADWOGrJuVuwYBKSGDAcPk143eIlYcL2L4C4BMFhtaoBrRk5e8DLer/aD44Cw4IJzwOeNmGwsLHrhAELJqB0ly5vSRgseKBHMGDBhO1fwIDBYs5Zc/5fMGDBtPeWBzBgsIgQLJioBnDDIkKwin4Cihl5PQNW29x/RV8AAAD//yAv5NEAAAAGSURBVAMAB+zKMeuGRe0AAAAASUVORK5CYII=");
+  border-image-slice: 7 fill;
+  border-image-width: 14px; /* Double la taille des bordures pixelisées */
+  border-image-repeat: stretch;
+
+  image-rendering: pixelated;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Press Start 2P", monospace;
+  color: hsl(0, 100%, 18%);
+}
+
+#lock-screen {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url("./Sprite/fond-motif.png");
+  background-repeat: repeat;
+  background-size: 128px 128px;
+  image-rendering: pixelated;
+}
+
+#lock-screen-content {
+  width: 392px;
+  min-height: 384px;
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; /* Centre tout le bloc au milieu du cadre */
+  gap: 12px; /* Gère un espacement régulier entre les trois éléments */
+
+  image-rendering: pixelated;
+  background-image: url("./Sprite/div-lock.png");
+  background-size: 100% 100%;
+
+  /* Marge intérieure suffisante pour isoler les fleurs */
+  padding: 55px 35px 50px 35px;
+}
+
+#lock-screen-content p,
+#lock-screen-content h1 {
+  font-size: 16px;
+  line-height: 1.4;
+  text-align: center;
+  margin: 0;
+  max-width: 280px; /* Évite que les lignes ne touchent les bords latéraux */
+}
+
+/* 1. Le cadre extérieur : porte ton sprite pixel art */
+/* 1. Le cadre extérieur : porte ton sprite pixel art */
+.input-wrapper {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 260px;
+  height: 60px; /* Donne l'espace nécessaire au sprite pour s'épaissir */
+  flex-shrink: 0;
+  background-image: url("./Sprite/champ-de-texte-actif.png");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  image-rendering: pixelated;
+  padding: 0 16px;
+  box-sizing: border-box;
+}
+
+/* 2. Le champ interne : totalement invisible, ne gère que la saisie */
+#password {
+  width: 100%;
+  height: 100%;
+  background: transparent !important;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  -webkit-appearance: none;
+  appearance: none;
+
+  /* Centrage horizontal */
+  text-align: center;
+  margin: 0 auto;
+
+  /* Style des points */
+  font-family: "Press Start 2P", monospace;
+  font-size: 1.1rem; /* Agrandit les points */
+  letter-spacing: 0.35rem; /* Espace les points façon jeu rétro */
+  color: #2b080c; /* Couleur des points (sombre/bordeaux) */
+  -webkit-text-fill-color: #2b080c;
+}
+
+/* Neutralise le fond blanc automatique imposé par Chrome / WebKit */
+#password:-webkit-autofill,
+#password:-webkit-autofill:hover,
+#password:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0 1000px transparent inset !important;
+  -webkit-text-fill-color: #000000 !important;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+#welcome-screen {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  animation: apparitionDouce 0.5s ease-in-out 0s;
+  background-image: url("./Sprite/fond-motif.png");
+  background-repeat: repeat;
+  background-size: 128px 128px;
+  image-rendering: pixelated;
+}
+
+#welcome-screen-content {
+  /* Dimensions basées sur ton dessin x10 */
+  width: 480px;
+  height: 192px;
+  box-sizing: border-box;
+
+  /* Flexbox pour centrer le texte pile au milieu */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* Ton nouveau sprite ! */
+  background-image: url("./Sprite/Welcome-screen-content.png");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  image-rendering: pixelated;
+
+  /* Le fameux padding pour protéger tes fleurs latérales */
+  padding: 0 60px;
+}
+
+#welcome-screen h2 {
+  font-size: 16px;
+  line-height: 1.2;
+}
+
+@keyframes apparitionDouce {
+  0% {
+    opacity: 0;
+    transform: scale(0.8); /* Un peu plus petit au début */
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1); /* Taille normale à la fin */
+  }
+}
+
+/* Animation pour le bouton d'aide */
+@keyframes boutonAide {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes sortieVersLeHaut {
+  0% {
+    opacity: 1;
+    transform: translateY(0); /* Position de départ normale */
+  }
+  100% {
+    opacity: 0;
+    /* À ton avis, quelle valeur faut-il mettre ici pour que l'écran monte ? */
+    transform: translateY(
+      -100%
+    ); /* Déplace l'élément vers le haut hors de l'écran */
+  }
+}
+
+/* C'est cette classe que notre JavaScript va rajouter tout à l'heure ! */
+#welcome-screen.animation-sortie {
+  animation: sortieVersLeHaut 0.6s ease-in-out forwards;
+}
+
+#main-app {
+  min-height: 100vh;
+}

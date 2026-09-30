@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cadeaux-copine</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <section id="lock-screen">
+      <div id="lock-screen-content">
+        <h1>Entre notre mot de passe secret !</h1>
+        <div class="input-wrapper">
+          <input
+            type="password"
+            id="password"
+            placeholder="Mot de passe secret"
+          />
+        </div>
+        <button id="btn-login" class="bouton-pixel-perso">Déverrouiller</button>
+        <!-- Rajouter un émojie -->
+        <p class="hidden" id="error-message">
+          Ce n'est pas le bon mot de passe !
+        </p>
+      </div>
+    </section>
+    <section id="welcome-screen" class="hidden">
+      <div id="welcome-screen-content">
+        <h2>Bienvenue mon coeur !</h2>
+      </div>
+    </section>
+    <section id="main-app" class="hidden">
+      <nav class="main-nav">
+        <!-- Onglets -->
+        <button id="tabs-lettres" class="tabs-nav" data-tabs="lettres">
+          Lettre d'amour
+        </button>
+        <button id="tabs-musique" class="tabs-nav" data-tabs="musique">
+          Musique
+        </button>
+        <button id="tabs-notes" class="tabs-nav" data-tabs="notes">
+          Notes
+        </button>
+        <button id="tabs-gallerie" class="tabs-nav" data-tabs="gallerie">
+          Gallerie
+        </button>
+      </nav>
+      <!-- Un conteneur dans le fichier HTML pour accueillir les futurs boutons -->
+      <div id="historique-jours"></div>
+      <!-- Conteneur des onglets -->
+      <div id="lettres" class="tabs-content">
+        <h2>Lettre d'amour</h2>
+        <p id="lettre-titre">Voici tes lettres d'amour...</p>
+        <p id="lettre-texte"></p>
+      </div>
+      <div id="musique" class="tabs-content hidden">
+        <h2>Musique</h2>
+        <p id="musique-titre">Voici la musique que j'ai choisis...</p>
+        <h3 id="musique-nom"></h3>
+        <p id="musique-note"></p>
+        <a id="musique-lien" href="#" target="_blank">Écouter la musique</a>
+      </div>
+      <div id="notes" class="tabs-content hidden">
+        <h2>Notes</h2>
+        <p id="note-titre">Des petits mots doux...</p>
+        <p id="note-texte"></p>
+      </div>
+      <div id="gallerie" class="tabs-content hidden">
+        <h2>Gallerie</h2>
+        <p id="gallerie-titre">Nos moments les plus beaux...</p>
+        <img id="gallerie-image" src="" alt="Souvenir du jour" />
+      </div>
+    </section>
+    <!-- Boutton d'aide -->
+    <button id="aide-btn" class="aide-btn">?</button>
+    <div id="aide-modale" class="modale hidden">
+      <div class="modale-contenu">
+        <button id="aide-modale-fermer" class="modale-fermer">&times;</button>
+        <h3>Besoin d'aide ?</h3>
+        <p>Chaque jour à 08h00, une nouvelle étape se débloque.</p>
+        <p>
+          Si tu as la moindre question ou un problème technique, écris-moi au :
+          <strong>06 32 40 57 96</strong>
+        </p>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
