@@ -15,12 +15,13 @@ const contenueSemaine = [
     musique: {
       titre: "Avec toi",
       artiste: "Oboy",
-      url: "https://youtu.be/PjjRd03jmJY?si=MwFXpf1RYloAZtBb",
+      url: "./Musiques/Avec-toi.mp3",
       note_musique:
         "Quoi de mieux que de commencer par la musique qui a marqué la première story d’officialisation de notre couple.",
     },
     note: "Un petit conseil mon cœur : Ne te fatigue pas trop aujourd’hui, tu risques d’être fatiguée à cause de tes règles. Bon courage mon amour et si tu as des tâches tu as un homme qui peut te les faire.",
-    image: "",
+    image: "./images/IMG_0221.jpeg",
+    note_img: "Notre première photo ensemble",
   },
   {
     jour: 2,
@@ -29,12 +30,13 @@ const contenueSemaine = [
     musique: {
       titre: "Moonlight",
       artiste: "Chase Atlantic",
-      url: "https://youtu.be/vUNK5rIssww?si=ptgj0uyZ4QEBHQBk",
+      url: "./Musiques/Moonlight.mp3",
       note_musique:
         "Un classique défini comme notre musique qui n'appartient qu'à nous, profite bien mon amour !",
     },
     note: "Courage mon amour, tu vas surmonter tous tes défis et te surpasser. Cette journée va bien se passer, car tu as un chéri sur qui compter !",
-    image: "",
+    image: "./images/IMG_0299.jpeg",
+    note_img: "Lanzarote - été 2026",
   },
   {
     jour: 3,
@@ -43,12 +45,13 @@ const contenueSemaine = [
     musique: {
       titre: "Sunsetz",
       artiste: "Cigarettes after Sex",
-      url: "https://youtu.be/5-rbSNzU_b8?si=WtIXhou5LMswtGJc",
+      url: "./Musiques/Sunsetz - Cigarettes After Sex.mp3",
       note_musique:
         "Une musique que tu apprécies énormément, je te laisse l’écouter et te poser dans ton lit car c’est un véritable chef d’œuvre !",
     },
     note: "Petit conseil : Si jamais tu as besoin de quelqu’un ou quelque chose afin de te sentir mieux ou pour quelconque raison, je suis là pour toi cœur !",
-    image: "",
+    image: "./images/IMG_0352.jpeg",
+    note_img: "Photo en amoureux à Lanzarote - été 2026",
   },
   {
     jour: 4,
@@ -57,12 +60,13 @@ const contenueSemaine = [
     musique: {
       titre: "Lady Killers",
       artiste: "G-Eazy",
-      url: "https://youtu.be/i9L_Ew4t1xg?si=YOrNHkeZoG_xttMc",
+      url: "./Musiques/G-Eazy - Lady Killers II.mp3",
       note_musique:
         "Une musique que tu aimes beaucoup et qui me plaît énormément à moi aussi. Je l’écoute probablement en même temps que toi.",
     },
-    note: "Petite info : Savais tu que pour réduire la douleur, une technique consiste à appliquer une poche de glace sur le bas du dos. Cela est censé engourdir la zone et réduire l’inflammation locale chez certaines femmes.",
-    image: "",
+    note: "Petite info : Savais tu que pour réduire la douleur, une technique consiste à appliquer une poche de glace sur le bas du dos. Cela est censé engourdir la zone et réduire l’inflammation local chez certaines femmes.",
+    image: "./images/IMG_0763.jpeg",
+    note_img: "Selfie à Viriat en amoureux",
   },
   {
     jour: 5,
@@ -71,12 +75,13 @@ const contenueSemaine = [
     musique: {
       titre: "Notes pour trop tard",
       artiste: "Orelsan",
-      url: "https://youtu.be/R2rxmLBebCM?si=JvUMAscSm_bVi8qb",
+      url: "./Musiques/Notes pour trop tard.mp3",
       note_musique:
         "Encore un classique qu'en plus de cela nous allons voir en concert bientôt, j’ai beaucoup trop hâte !!",
     },
     note: "Petite infos : Le savais tu ? Sentir un vêtement de la personne qu’on aime qui contient son odeur réduit instantanément le taux de cortisol (l’hormone du stress). Donc si tu en as besoin je suis là. ",
-    image: "",
+    image: "./images/IMG_4035.jpeg",
+    note_img: "Premier voyage à Paris !",
   },
   {
     jour: 6,
@@ -85,12 +90,13 @@ const contenueSemaine = [
     musique: {
       titre: "Him & I",
       artiste: "G-Eazy",
-      url: "https://youtu.be/SA7AIQw-7Ms?si=oz4yKtvk0BtHBDDp",
+      url: "./Musiques/G-Eazy & Halsey - Him & I.mp3",
       note_musique:
         "Une musique complètement incroyable qui décrit parfaitement nous deux, à quel point on s’aime et on tient à nous mutuellement  ",
     },
     note: "Pense bien à te poser mon amour et penses-y : tu as bientôt terminé tes règles alors tu peux être fière de toi mon cœur pour ce que tu as réussi à endurer !",
-    image: "",
+    image: "./images/IMG_4511.jpeg",
+    note_img: "Hotêl à Aix-les-Bains - Mai 2026",
   },
   {
     jour: 7,
@@ -99,17 +105,24 @@ const contenueSemaine = [
     musique: {
       titre: "Close To Me",
       artiste: "Ellie Goulding",
-      url: "https://youtu.be/ajN57m_OSpY?si=hf4sGfk4LlMqTq7A",
+      url: "./Musiques/Close To Me (Official Video).mp3",
       note_musique:
         "Pour finir en beauté avec cette jolie musique que je sais que tu aimes beaucoup ces derniers temps alors je te laisse l’apprécier cœur !",
     },
     note: "Tu as fini tes règles cœur, alors comment était ce site ? Et bien tu vas pouvoir y répondre après avoir cliqué sur ce bouton en bas !! ",
-    image: "",
+    image: "./images/IMG_5071.jpeg",
+    note_img: "Premier voyage à l'aquarium",
   },
 ];
 const aideModale = document.getElementById("aide-modale");
 const aideBtn = document.getElementById("aide-btn");
 const aideModaleFermer = document.getElementById("aide-modale-fermer");
+const moteurAudio = document.getElementById("moteur-son");
+const boutonPlay = document.getElementById("btn-play");
+const barreProgression = document.getElementById("barre-progression");
+const tempsMusique = document.getElementById("temps-musique");
+const boutonPrecedent = document.getElementById("bouton-precedent");
+const boutonSuivant = document.getElementById("bouton-suivant");
 
 // Fonction qui initialise ou récupère la date de début
 function initialiserOuRecupererDateDebut() {
@@ -219,9 +232,11 @@ function afficherContenuJour(numeroJour) {
       `${donneesDuJour.musique.titre} - ${donneesDuJour.musique.artiste}`;
     document.getElementById("musique-note").textContent =
       donneesDuJour.musique.note_musique;
-    document.getElementById("musique-lien").href = donneesDuJour.musique.url;
+    moteurAudio.src = donneesDuJour.musique.url;
     document.getElementById("note-texte").textContent = donneesDuJour.note;
     document.getElementById("gallerie-image").src = donneesDuJour.image || "";
+    document.getElementById("gallerie-note").textContent =
+      donneesDuJour.note_img;
     // Sinon on affiche une erreur
   } else {
     console.error(`Aucune donnée trouvée pour le jour ${numeroJour}`);
@@ -250,4 +265,51 @@ aideBtn.addEventListener("click", () => {
 
 aideModaleFermer.addEventListener("click", () => {
   aideModale.classList.add("hidden");
+});
+
+// --- LOGIQUE DU LECTEUR AUDIO ---
+
+boutonPlay.addEventListener("click", () => {
+  if (moteurAudio.paused) {
+    moteurAudio.play();
+    boutonPlay.src = "./Sprite/Bouton_Pause.png";
+  } else {
+    moteurAudio.pause();
+    boutonPlay.src = "./Sprite/Bouton_Play.png";
+  }
+});
+
+moteurAudio.addEventListener("timeupdate", () => {
+  const pourcentage = (moteurAudio.currentTime / moteurAudio.duration) * 100;
+  barreProgression.value = pourcentage;
+  const tempsActuel = formaterTemps(moteurAudio.currentTime);
+  const tempsTotal = formaterTemps(moteurAudio.duration);
+  tempsMusique.textContent = `${tempsActuel} / ${tempsTotal}`;
+});
+
+barreProgression.addEventListener("input", () => {
+  const nouveauTemps = (barreProgression.value / 100) * moteurAudio.duration;
+  moteurAudio.currentTime = nouveauTemps;
+});
+
+moteurAudio.addEventListener("ended", () => {
+  boutonPlay.src = "./Sprite/Bouton_Play.png";
+  barreProgression.value = 0;
+  tempsMusique.textContent = "00 : 00 / " + formaterTemps(moteurAudio.duration);
+});
+
+function formaterTemps(secondes) {
+  if (isNaN(secondes)) return "00 : 00";
+  const min = Math.floor(secondes / 60);
+  const sec = Math.floor(secondes % 60);
+  // Ajoute un 0 devant si c'est plus petit que 10
+  return `${min < 10 ? "0" : ""}${min}:${sec < 10 ? "0" : ""}${sec}`;
+}
+
+boutonSuivant.addEventListener("click", () => {
+  moteurAudio.currentTime += 10;
+});
+
+boutonPrecedent.addEventListener("click", () => {
+  moteurAudio.currentTime -= 10;
 });

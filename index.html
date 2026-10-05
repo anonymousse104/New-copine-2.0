@@ -56,17 +56,57 @@
         <div id="lettre-titre-content">
           <h2>Lettre d'amour</h2>
         </div>
-        <p id="lettre-titre">Voici tes lettres d'amour...</p>
+        <div id="lettre-p">
+          <p id="lettre-titre">Voici tes lettres d'amour...</p>
+        </div>
         <div id="lettre-texte-content">
           <p id="lettre-texte"></p>
         </div>
       </div>
       <div id="musique" class="tabs-content hidden">
         <h2>Musique</h2>
-        <p id="musique-titre">Voici la musique que j'ai choisis...</p>
-        <h3 id="musique-nom"></h3>
-        <p id="musique-note"></p>
-        <a id="musique-lien" href="#" target="_blank">Écouter la musique</a>
+        <div id="lecteur-audio">
+          <img id="lecteur-cd" src="./Sprite/cd.png" alt="CD" />
+          <img
+            id="lecteur-pochette"
+            src="./Sprite/pochette-coeurs.png"
+            alt="Pochette"
+          />
+          <div id="lecteur-droite">
+            <p id="musique-titre">Voici la musique que j'ai choisis...</p>
+            <h3 id="musique-nom"></h3>
+            <p id="musique-note"></p>
+            <div id="lecteur-controles">
+              <!-- La barre de progression et le temps -->
+              <div id="zone-barre">
+                <input
+                  type="range"
+                  id="barre-progression"
+                  value="0"
+                  min="0"
+                  max="100"
+                />
+                <br />
+                <span id="temps-musique">00 : 00 / 00 : 00</span>
+              </div>
+              <!-- Les boutons cliquables -->
+              <div id="lecteur-boutons">
+                <img
+                  id="bouton-precedent"
+                  src="./Sprite/Bouton-precedent.png"
+                  alt="Précédent"
+                />
+                <img id="btn-play" src="./Sprite/Bouton_Play.png" alt="Play" />
+                <img
+                  id="bouton-suivant"
+                  src="./Sprite/Bouton-Next.png"
+                  alt="Suivant"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <audio id="moteur-son" src=""></audio>
       </div>
       <div id="notes" class="tabs-content hidden">
         <h2>Notes</h2>
@@ -76,7 +116,10 @@
       <div id="gallerie" class="tabs-content hidden">
         <h2>Gallerie</h2>
         <p id="gallerie-titre">Nos moments les plus beaux...</p>
-        <img id="gallerie-image" src="" alt="Souvenir du jour" />
+        <div id="cadre-photo-container">
+          <img id="gallerie-image" src="" alt="Souvenir du jour" />
+          <p id="gallerie-note">Ceci est la note de la photo</p>
+        </div>
       </div>
     </section>
     <!-- Boutton d'aide -->

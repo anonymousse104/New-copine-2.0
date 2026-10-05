@@ -295,7 +295,10 @@ body {
   image-rendering: pixelated;
 }
 
-#lettre-titre-content {
+#lettre-titre-content,
+#musique h2,
+#notes h2,
+#gallerie h2 {
   display: flex; /* On fait un inline-flex pour que le contenu soit centré */
   align-items: center;
   text-align: center;
@@ -326,7 +329,7 @@ body {
   margin: 10px auto 0 auto; /* Centre la boîte ET ajoute 20px d'espace au-dessus pour ne pas coller l'autre texte */
 
   /* 3. Le secret pour que le texte respire (marges intérieures) */
-  padding: 120px 110px 50px 60px;
+  padding: 80px 100px 40px 40px;
   gap: 10px; /* Espace entre les paragraphes */
   box-sizing: border-box; /* Obligatoire : empêche le padding de déformer tes 800px de base */
 
@@ -337,4 +340,196 @@ body {
 
 #lettre-texte-content p {
   margin: 0;
+}
+
+#lettre-p,
+#note-titre,
+#gallerie-titre {
+  /* 1. Le fond */
+  background-image: url("./Sprite/sous-titre.png");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  image-rendering: pixelated;
+  font-size: 0.9rem;
+
+  /* 2. On laisse la boîte épouser la taille de la phrase */
+  width: 600px;
+  height: 60px;
+  margin: 10px auto 20px auto;
+
+  /* 3. LE SECRET : le padding ! C'est lui qui crée le ruban autour du texte */
+  box-sizing: border-box;
+  padding: 50px 40px; /* 15px de vide en haut/bas, 40px sur les côtés */
+
+  /* 4. Le texte */
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#lecteur-audio {
+  display: flex;
+  background-image: url("./Sprite/fond-lecteur.png");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  image-rendering: pixelated;
+  width: 900px;
+  height: 300px;
+  margin: 20px auto;
+  padding: 15px 30px;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+#lecteur-cd,
+#lecteur-pochette {
+  width: 200px; /* Tu pourras ajuster cette taille selon tes goûts */
+  height: 200px;
+  image-rendering: pixelated; /* Pour que le redimensionnement reste net et rétro */
+}
+
+#lecteur-droite {
+  display: flex;
+  flex-direction: column; /* Empile les éléments verticalement */
+  width: 100%; /* Prend toute la place disponible à droite des images */
+  text-align: left; /* Aligne ton texte à gauche */
+}
+
+#lecteur-droite p {
+  margin: 0; /* Supprime les marges par défaut */
+  font-size: 0.7rem; /* Ajuste la taille du texte */
+  line-height: 1.4; /* Aère les lignes pour une meilleure lisibilité */
+}
+
+#temps-musique {
+  font-size: 0.8rem;
+  white-space: nowrap; /* Ne pas couper les chiffres */
+  min-width: 100px; /* Ne pas couper les chiffres */
+}
+
+#lecteur-boutons img {
+  width: 30px;
+  height: 30px;
+  image-rendering: pixelated;
+  cursor: pointer;
+  background-color: #ffccd5;
+  border: 3px solid #680000;
+  padding: 6px;
+  box-shadow: 0 4px 0 #680000;
+}
+
+#lecteur-boutons img:active {
+  transform: translateY(4px);
+  box-shadow: 0 0px 0 #680000;
+}
+
+/* Aligne la barre et le temps de la musique sur la même ligne */
+#zone-barre {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-top: 15px; /* Décolle la barre de ton texte "Pour finir en beauté..." */
+}
+
+/* Aligne tes 3 boutons et les espace */
+#lecteur-boutons {
+  display: flex;
+  gap: 15px;
+  margin-top: 15px;
+  align-items: center;
+  gap: 10px; /* Espace entre les boutons */
+}
+
+/* A. On supprime le design de base du navigateur */
+#barre-progression {
+  -webkit-appearance: none; /* La commande magique qui efface le style bleu */
+  appearance: none;
+  flex-grow: 1; /* On lui donne la taille qu'il veut */
+  background: transparent;
+}
+
+/* B. On dessine la "piste" (la ligne du fond) */
+#barre-progression::-webkit-slider-runnable-track {
+  height: 10px;
+  background-color: #680000; /* Ton fond bordeaux */
+  border: 2px solid #ffccd5; /* Un contour rose clair */
+  border-radius: 4px;
+}
+
+/* C. On dessine le "curseur" (le petit rectangle qu'on attrape) */
+#barre-progression::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 20px;
+  width: 20px;
+  background-image: url("./Sprite/curseur.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  cursor: pointer;
+  margin-top: -6px; /* Astuce pour centrer le curseur sur la piste */
+}
+
+#note-texte {
+  /* 1. L'image de fond (on réutilise ton sprite de lettre) */
+  background-image: url("./Sprite/Letter.png");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  image-rendering: pixelated;
+
+  /* 2. Dimensions et centrage */
+  width: 750px; /* Un peu plus petit que ta grande lettre */
+  margin: 20px auto; /* Centre la boîte sur la page */
+
+  /* 3. L'espace à l'intérieur pour repousser le texte des bords */
+  padding: 70px 80px 50px 80px; /* Ajuste ces chiffres si le texte touche le dessin du cadre */
+  box-sizing: border-box; /* Obligatoire pour ne pas déformer la boîte */
+
+  /* 4. Le style du texte */
+  line-height: 1.6; /* Aère les lignes */
+  text-align: center;
+}
+
+#cadre-photo-container {
+  display: flex;
+  flex-direction: column;
+
+  /* 1. Dimensions fixes et centrage */
+  width: 350px;
+  height: 480px;
+  margin: 20px auto;
+
+  /* 2. Ton image de fond (le cadre pixel art) */
+  background-image: url("./Sprite/Cadre-photo-n2.png");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  image-rendering: pixelated;
+
+  /* 3. Le padding pour repousser la photo et la note à l'intérieur du carré blanc */
+  padding: 50px 45px 40px 58px; /* Modifie ces chiffres pour caler parfaitement la photo ! */
+  box-sizing: border-box;
+}
+
+#gallerie-note {
+  text-align: center;
+  color: #680000; /* Ton bordeaux habituel */
+  /* L'astuce : un contour blanc d'un pixel tout autour du texte pour qu'il reste lisible sur le damier */
+  text-shadow:
+    1px 1px 0px #ffffff,
+    -1px -1px 0px #ffffff,
+    1px -1px 0px #ffffff,
+    -1px 1px 0px #ffffff;
+  font-size: 0.75rem;
+  margin-top: 70px; /* Pousse le texte tout en bas de la boîte */
+  margin-right: 20px; /* L'éloigne un peu du bord inférieur */
+  margin-bottom: 20px; /* L'éloigne un peu du bord inférieur */
+}
+
+#gallerie-image {
+  height: 250px;
+  width: 230px; /* À ajuster selon la taille de ta zone blanche */
+  object-fit: cover; /* Magique : si la photo n'est pas carrée, ça la rogne proprement sans l'écraser */
+  border: 2px solid #680000; /* Optionnel : un petit contour pour bien la délimiter */
 }
