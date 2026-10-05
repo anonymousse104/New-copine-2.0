@@ -15,16 +15,33 @@
 
 /* Boîte blanche centrale */
 .modale-contenu {
-  background: #ffffff;
-  padding: 20px;
-  border-radius: 8px;
-  position: relative;
-  max-width: 400px;
-  width: 90%;
-  color: #333;
+  /* 1. Dimensions basées sur les proportions de ton dessin */
+  width: 600px;
+  height: 400px;
+  max-width: 90%;
+  box-sizing: border-box;
+
+  /* 2. Ton nouveau fond fait main ! */
+  background-image: url("./Sprite/fond-modale.png");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  image-rendering: pixelated;
+
+  /* On enlève les anciens fonds blancs ou bordures automatiques */
+  background-color: transparent;
+  border: none;
+
+  /* 3. Le texte */
+  color: #680000;
+  text-align: center;
+  line-height: 1.8;
+
+  /* LE SECRET : On met un très grand padding en bas (100px) 
+     pour empêcher le texte de descendre et de cacher tes fleurs ! */
+  padding: 60px 40px 100px 60px;
 }
 
-.fermer-btn {
+.modale-fermer {
   position: absolute;
   top: 10px;
   right: 10px;
@@ -32,24 +49,41 @@
   border: none;
   font-size: 1.5rem;
   cursor: pointer;
+  background-color: #ff8ba0;
+  border: 3px solid #770000;
+  border-radius: 15px;
 }
 
 .aide-btn {
+  /* 1. Position et taille (Garde la position, ajuste la taille selon ton dessin) */
   position: fixed;
-  bottom: 20px; /* Distance par rapport au bas */
-  right: 20px; /* Distance par rapport à la droite */
-  width: 45px;
-  height: 45px;
-  border-radius: 50%; /* Cercle parfait */
-  border: 2px solid #333;
-  background-color: #ffffff;
-  color: #333;
-  font-size: 1.3rem;
-  font-weight: bold;
+  bottom: 20px;
+  right: 20px;
+  width: 60px; /* Ajuste la taille si besoin */
+  height: 60px;
+
+  /* 2. On enlève l'ancien design "code" */
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
+  border-radius: 0;
+
+  /* 3. Ton nouveau dessin ! (Change le nom du fichier) */
+  background-image: url("./Sprite/bouton-aide.png");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  image-rendering: pixelated;
+
+  /* 4. LE SECRET : On rend le texte "?" du HTML invisible */
+  color: transparent;
+
   cursor: pointer;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  z-index: 50; /* Reste au-dessus du reste du contenu */
-  animation: boutonAide 0.5s ease-in-out 0s;
+  z-index: 50;
+}
+
+/* On garde le petit effet d'enfoncement quand on clique */
+.aide-btn:active {
+  transform: translateY(4px);
 }
 
 .aide-btn:hover {
@@ -532,4 +566,85 @@ body {
   width: 230px; /* À ajuster selon la taille de ta zone blanche */
   object-fit: cover; /* Magique : si la photo n'est pas carrée, ça la rogne proprement sans l'écraser */
   border: 2px solid #680000; /* Optionnel : un petit contour pour bien la délimiter */
+}
+
+#tourner-ecran {
+  display: none;
+
+  /* =========================================
+   MODE IPAD ET TELEPHONE (Écrans < 820px)
+   ========================================= */
+  @media screen and (max-width: 820px) {
+    /* 1. On force les boutons à passer à la ligne s'ils manquent de place */
+    .main-nav,
+    #historique-jours {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px; /* Ajoute un petit espace entre les boutons */
+    }
+
+    /* 2. On réduit la taille des grandes boîtes et on diminue les marges internes (padding) */
+    #lettre-texte-content,
+    #note-texte {
+      width: 90%; /* Prend presque tout l'écran au lieu de 900px */
+      padding: 60px 30px 40px 30px; /* On réduit l'espace vide pour sauver le texte ! */
+    }
+
+    /* 3. On ajuste les bandeaux de titres */
+    #lettre-titre-content,
+    #musique h2,
+    #notes h2,
+    #gallerie h2 {
+      width: 90%;
+      height: 100px; /* Un peu moins haut pour ne pas prendre tout l'écran */
+      background-size: contain; /* Aide l'image à mieux s'adapter */
+    }
+
+    #lettre-p,
+    #note-titre,
+    #gallerie-titre {
+      width: 90%;
+      padding: 30px 20px;
+    }
+
+    /* 4. Le lecteur audio passe en mode "colonne" pour ne pas être tout écrasé */
+    #lecteur-audio {
+      width: 95%;
+      height: auto;
+      flex-direction: column; /* Empile le CD au-dessus des contrôles */
+      padding: 20px;
+    }
+  }
+}
+
+/* 2. SI l'écran est tenu à la VERTICALE (Portrait) */
+@media screen and (orientation: portrait) {
+  /* On affiche notre message en géant, par-dessus tout le reste */
+  #tourner-ecran {
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #ffccd5; /* Ton fond rose clair */
+    z-index: 9999; /* Chiffre immense pour être sûr qu'il recouvre absolument tout */
+
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 40px;
+
+    font-family: "Press Start 2P", monospace;
+    color: #680000;
+    line-height: 1.6;
+  }
+
+  /* Et on cache sauvagement tout le reste de ton application ! */
+  #lock-screen,
+  #welcome-screen,
+  #main-app {
+    display: none !important;
+  }
 }
