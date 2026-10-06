@@ -28,10 +28,14 @@
           />
         </div>
         <button id="btn-login" class="bouton-pixel-perso">Déverrouiller</button>
-        <!-- Rajouter un émojie -->
         <p class="hidden" id="error-message">
           Ce n'est pas le bon mot de passe !
         </p>
+      </div>
+
+      <!-- TA NOTIFICATION DOIT ÊTRE EXACTEMENT ICI -->
+      <div id="notification-jour" class="hidden">
+        <p>Un nouveau jour <br />t'attend !</p>
       </div>
     </section>
     <section id="welcome-screen" class="hidden">
@@ -55,7 +59,6 @@
           Gallerie
         </button>
       </nav>
-      <!-- Un conteneur dans le fichier HTML pour accueillir les futurs boutons -->
       <div id="historique-jours"></div>
       <!-- Conteneur des onglets -->
       <div id="lettres" class="tabs-content">
@@ -113,6 +116,7 @@
           </div>
         </div>
         <audio id="moteur-son" src=""></audio>
+        <audio id="vocal-secret" src="./Musiques/vocale-secret.m4a"></audio>
       </div>
       <div id="notes" class="tabs-content hidden">
         <h2>Notes</h2>
@@ -127,7 +131,58 @@
           <p id="gallerie-note">Ceci est la note de la photo</p>
         </div>
       </div>
+      <!-- Un conteneur dans le fichier HTML pour accueillir les futurs boutons -->
+      <!-- LE RADAR D'HUMEUR -->
+      <!-- LE RADAR D'HUMEUR -->
+      <div id="emojis-humeur">
+        <button class="btn-humeur" data-humeur="heureuse">
+          <img src="./Sprite/heureuse.png" alt="Heureuse" />
+        </button>
+        <button class="btn-humeur" data-humeur="fatiguee">
+          <img src="./Sprite/fatiguee.png" alt="Fatiguée" />
+        </button>
+        <button class="btn-humeur" data-humeur="douleur_triste">
+          <img src="./Sprite/triste.png" alt="Triste" />
+        </button>
+      </div>
+      <!-- Le message de remerciement -->
+      <p id="merci-humeur" class="hidden">Message envoyé à ton chéri ! ❤️</p>
     </section>
+    <!-- LA ZONE D'AVIS COMPLÈTE EST ICI -->
+    <div id="zone-avis" class="hidden">
+      <div id="zone-avis-contenu">
+        <button id="avis-modale-fermer" class="modale-fermer">&times;</button>
+        <h3>Fin des 7 jours ! 🎉</h3>
+        <p>As-tu aimé cette petite surprise ?</p>
+
+        <div id="boutons-avis">
+          <!-- Bouton Pouce Vert -->
+          <button class="btn-avis" data-avis="positif" id="btn-avis-positif">
+            <img src="./Sprite/pouce-vert.png" alt="Pouce vert" />
+          </button>
+
+          <!-- Bouton Pouce Rouge -->
+          <button class="btn-avis" data-avis="negatif" id="btn-avis-negatif">
+            <img src="./Sprite/pouce-rouge.png" alt="Pouce rouge" />
+          </button>
+        </div>
+
+        <textarea
+          id="texte-avis"
+          placeholder="Laisse-moi un petit mot ici..."
+        ></textarea>
+        <br />
+        <button id="btn-envoyer-avis" class="bouton-pixel-perso">
+          Envoyer mon avis
+        </button>
+        <p id="merci-avis" class="hidden">Ton mot a bien été envoyé ! ❤️</p>
+      </div>
+    </div>
+    <!-- FIN DE LA ZONE D'AVIS -->
+    <!-- Bouton urgence calin -->
+    <button id="btn-calin" class="hidden"></button>
+    <!-- Bouton ouvrir la zone d'avis -->
+    <button id="btn-ouvrir-avis" class="bouton-pixel-perso hidden">Avis</button>
     <!-- Boutton d'aide -->
     <button id="aide-btn" class="aide-btn">?</button>
     <div id="aide-modale" class="modale hidden">

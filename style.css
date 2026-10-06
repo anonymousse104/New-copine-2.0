@@ -128,6 +128,7 @@ body {
 #lock-screen {
   min-height: 100vh;
   display: flex;
+  flex-direction: column; /* La règle magique pour empiler de haut en bas */
   align-items: center;
   justify-content: center;
 }
@@ -568,59 +569,269 @@ body {
   border: 2px solid #680000; /* Optionnel : un petit contour pour bien la délimiter */
 }
 
+/* --- 1. LE BLOCAGE IPAD VERTICAL --- */
 #tourner-ecran {
   display: none;
+}
 
-  /* =========================================
-   MODE IPAD ET TELEPHONE (Écrans < 820px)
-   ========================================= */
-  @media screen and (max-width: 820px) {
-    /* 1. On force les boutons à passer à la ligne s'ils manquent de place */
-    .main-nav,
-    #historique-jours {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 10px; /* Ajoute un petit espace entre les boutons */
-    }
+#btn-calin {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  background-image: url("./Sprite/btn-calin.png");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  image-rendering: pixelated;
+  width: 240px;
+  height: 120px;
+  border: none;
+  background-color: transparent;
+  transition: transform 0.1s ease-in-out;
+}
 
-    /* 2. On réduit la taille des grandes boîtes et on diminue les marges internes (padding) */
-    #lettre-texte-content,
-    #note-texte {
-      width: 90%; /* Prend presque tout l'écran au lieu de 900px */
-      padding: 60px 30px 40px 30px; /* On réduit l'espace vide pour sauver le texte ! */
-    }
+/* 1. L'animation de survol (la souris passe dessus) */
+#btn-calin:hover {
+  /* On déplace l'élément de 4 pixels vers le HAUT */
+  transform: translateY(-4px);
+}
 
-    /* 3. On ajuste les bandeaux de titres */
-    #lettre-titre-content,
-    #musique h2,
-    #notes h2,
-    #gallerie h2 {
-      width: 90%;
-      height: 100px; /* Un peu moins haut pour ne pas prendre tout l'écran */
-      background-size: contain; /* Aide l'image à mieux s'adapter */
-    }
+/* 2. L'animation de clic (le bouton est enfoncé) */
+#btn-calin:active {
+  /* On déplace l'élément de 4 pixels vers le BAS */
+  transform: translateY(4px);
+}
 
-    #lettre-p,
-    #note-titre,
-    #gallerie-titre {
-      width: 90%;
-      padding: 30px 20px;
-    }
+/* --- ANIMATION DES COEURS VOLANTS --- */
+.coeur-volant {
+  position: fixed;
+  bottom: -30px; /* Commence juste en dessous de l'écran */
+  pointer-events: none; /* TRÈS IMPORTANT : Empêche les cœurs de bloquer les clics sur le reste du site */
+  z-index: 9999;
+  /* L'animation qui fait monter le cœur et le fait disparaître en fondu */
+  animation: envol 3s ease-in forwards;
+}
 
-    /* 4. Le lecteur audio passe en mode "colonne" pour ne pas être tout écrasé */
-    #lecteur-audio {
-      width: 95%;
-      height: auto;
-      flex-direction: column; /* Empile le CD au-dessus des contrôles */
-      padding: 20px;
-    }
+@keyframes envol {
+  0% {
+    transform: translateY(0) scale(0.5); /* Petit au départ */
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100vh) scale(2); /* Monte tout en haut de l'écran et grossit */
+    opacity: 0;
   }
 }
 
-/* 2. SI l'écran est tenu à la VERTICALE (Portrait) */
+/* --- LE CURSEUR JEU RÉTRO --- */
+
+/* 1. L'animation d'opacité (Allumé / Éteint) */
+@keyframes clignotement {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* 2. Le curseur fantôme ajouté à la fin de la lettre */
+#lettre-texte::after,
+#note-texte::after {
+  content: " █"; /* Le fameux bloc avec un petit espace avant */
+  color: #680000; /* Ton bordeaux caractéristique */
+
+  /* On lui applique l'animation pour qu'elle boucle à l'infini (infinite) en 1 seconde */
+  animation: clignotement 1s infinite;
+}
+
+/* --- RADAR D'HUMEUR --- */
+#radar-humeur {
+  text-align: center;
+  margin: 20px auto;
+  background-image: url("./Sprite/sous-titre.png"); /* On réutilise ta belle boîte ! */
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  image-rendering: pixelated;
+  width: 500px;
+  padding: 30px 20px;
+  box-sizing: border-box;
+}
+
+#radar-humeur p {
+  font-size: 0.75rem;
+  margin-bottom: 15px;
+  color: #680000;
+}
+
+#emojis-humeur {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+
+  /* --- LES NOUVELLES RÈGLES --- */
+  position: fixed; /* On fixe le groupe entier à l'écran */
+  bottom: 40px; /* C'est ici que tu règles la hauteur pour les surélever du bas ! */
+  left: 50%; /* On pousse la boîte au milieu... */
+  transform: translateX(-50%); /* ... et on la centre parfaitement */
+  z-index: 90; /* Pour qu'ils passent toujours au-dessus du reste */
+}
+
+/* Le bouton devient totalement invisible, seul ton dessin apparaîtra */
+.btn-humeur {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+/* On garde juste le petit effet d'enfoncement sur le dessin quand elle clique */
+.btn-humeur:active {
+  transform: translateY(4px);
+}
+
+/* La taille de tes dessins pixel art */
+.btn-humeur img {
+  width: 55px; /* Tu peux agrandir ou réduire ce chiffre selon tes goûts */
+  height: 55px;
+  image-rendering: pixelated;
+  display: block;
+}
+
+#merci-humeur {
+  position: fixed;
+  bottom: 25px; /* On le remonte un tout petit peu */
+  left: 50%;
+  transform: translateX(-50%);
+  color: #680000;
+  font-size: 0.75rem;
+  z-index: 90;
+
+  /* --- NOUVEAU DESIGN DE BULLE RÉTRO --- */
+  background-color: #ffccd5; /* Ton rose clair */
+  border: 3px solid #680000; /* Ton bordeaux */
+  padding: 10px 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 0 #680000;
+}
+
+/* --- ZONE D'AVIS (FIN DES 7 JOURS) --- */
+/* --- ZONE D'AVIS (FENÊTRE POP-UP) --- */
+#zone-avis {
+  /* On la met par-dessus tout l'écran */
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.7); /* Fond noir semi-transparent */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 200; /* Toujours au-dessus ! */
+}
+
+/* On ajoute une sous-boîte pour faire le rectangle rose */
+#zone-avis-contenu {
+  background-color: #ffccd5;
+  border: 4px solid #680000;
+  border-radius: 15px;
+  width: 600px;
+  max-width: 90%;
+  padding: 30px;
+  box-sizing: border-box;
+  box-shadow: 0 8px 0 #680000;
+  text-align: center;
+}
+
+#zone-avis h3 {
+  color: #680000;
+  margin-top: 0;
+  font-size: 1.2rem;
+  line-height: 1.5;
+}
+
+#zone-avis p {
+  font-size: 0.8rem;
+  color: #680000;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+#boutons-avis {
+  display: flex;
+  justify-content: center;
+  gap: 40px; /* Bel espace entre les deux pouces */
+  margin: 20px 0;
+}
+
+.btn-avis {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: transform 0.1s;
+}
+
+.btn-avis:active {
+  transform: translateY(4px); /* Petit effet d'enfoncement physique */
+}
+
+.btn-avis img {
+  width: 60px; /* Taille de tes pouces pixel art */
+  height: 60px;
+  image-rendering: pixelated;
+}
+
+/* Le champ de texte pour le petit mot */
+#texte-avis {
+  width: 85%;
+  height: 100px;
+  font-family: "Press Start 2P", monospace;
+  font-size: 0.7rem;
+  color: #680000;
+  background-color: #ffffff;
+  border: 3px solid #680000;
+  padding: 15px;
+  box-sizing: border-box;
+  resize: none; /* Empêche de redimensionner et de casser le site */
+  margin-bottom: 20px;
+  box-shadow: inset 0 4px 0 rgba(0, 0, 0, 0.1); /* Petite ombre intérieure */
+}
+
+#texte-avis:focus {
+  outline: none;
+  background-color: #fff0f3; /* Devient légèrement rose quand elle tape dedans */
+}
+
+/* Le texte de remerciement de l'avis */
+#merci-avis {
+  font-size: 0.75rem;
+  color: #27ae60; /* Un petit vert positif */
+  margin-top: 15px;
+}
+/* --- LE BOUTON D'OUVERTURE DES AVIS --- */
+#btn-ouvrir-avis {
+  position: fixed;
+  bottom: 25px;
+  right: 100px;
+  z-index: 50;
+
+  /* On redonne de l'espace à l'intérieur pour laisser respirer les bordures pixel art ! */
+  padding: 15px 30px;
+  min-height: 65px;
+  box-sizing: border-box; /* Pour que le padding ne déforme pas tout */
+}
+
+/* On dit à la boîte d'avis de garder la croix à l'intérieur */
+#zone-avis-contenu {
+  position: relative;
+}
+
+/* MEDIA  */
+/* MEDIA QUERIES (ADAPTATION IPAD) */
 @media screen and (orientation: portrait) {
-  /* On affiche notre message en géant, par-dessus tout le reste */
   #tourner-ecran {
     display: flex;
     position: fixed;
@@ -628,23 +839,106 @@ body {
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-color: #ffccd5; /* Ton fond rose clair */
-    z-index: 9999; /* Chiffre immense pour être sûr qu'il recouvre absolument tout */
-
+    background-color: #ffccd5;
+    z-index: 9999;
     align-items: center;
     justify-content: center;
     text-align: center;
     padding: 40px;
-
     font-family: "Press Start 2P", monospace;
     color: #680000;
     line-height: 1.6;
   }
 
-  /* Et on cache sauvagement tout le reste de ton application ! */
+  /* On cache absolument TOUT le reste du site */
   #lock-screen,
   #welcome-screen,
-  #main-app {
+  #main-app,
+  #emojis-humeur,
+  #merci-humeur,
+  #btn-calin,
+  #btn-ouvrir-avis,
+  #aide-btn,
+  #aide-modale,
+  #zone-avis {
     display: none !important;
+  }
+}
+
+/* --- 2. LA NOTIFICATION --- */
+#notification-jour {
+  /* Tes réglages actuels (ne les efface pas) */
+  width: 400px;
+  height: 80px;
+  margin-top: 30px;
+  background-image: url("./Sprite/notification.png");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  image-rendering: pixelated;
+  animation: pulsation 2s infinite;
+
+  /* --- NOUVEAU : LA MAGIE DU CENTRAGE --- */
+  display: flex;
+  align-items: center; /* Centre de haut en bas */
+  justify-content: center; /* Centre de gauche à droite */
+}
+
+/* --- NOUVEAU : LE STYLE DE TON TEXTE --- */
+#notification-jour p {
+  margin-top: 30px;
+  color: #680000; /* Ton fameux bordeaux */
+  font-size: 0.75rem; /* Ajuste ce chiffre si c'est trop gros/petit */
+  text-align: center;
+  line-height: 1.4; /* Sépare proprement les deux lignes */
+
+  /* Optionnel : si ton dessin décale un peu le texte, utilise un padding */
+  /* padding-right: 15px; */
+}
+
+@keyframes pulsation {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* --- 3. L'ADAPTATION IPAD (Responsive) --- */
+@media screen and (max-width: 820px) {
+  .main-nav,
+  #historique-jours {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+  }
+  #lettre-texte-content,
+  #note-texte {
+    width: 90%;
+    padding: 60px 30px 40px 30px;
+  }
+  #lettre-titre-content,
+  #musique h2,
+  #notes h2,
+  #gallerie h2 {
+    width: 90%;
+    height: 100px;
+    background-size: contain;
+  }
+  #lettre-p,
+  #note-titre,
+  #gallerie-titre {
+    width: 90%;
+    padding: 30px 20px;
+  }
+  #lecteur-audio {
+    width: 95%;
+    height: auto;
+    flex-direction: column;
+    padding: 20px;
   }
 }
