@@ -137,7 +137,9 @@ function initialiserOuRecupererDateDebut() {
   let dateDebut;
   if (dateStockee === null) {
     dateDebut = new Date();
-    localStorage.setItem("dateDebut", dateDebut);
+    // On recule la date d'un jour (Voyage dans le temps !)
+    dateDebut.setDate(dateDebut.getDate() - 1);
+    localStorage.setItem("dateDebut", dateDebut.toISOString());
   } else {
     dateDebut = new Date(dateStockee);
   }
