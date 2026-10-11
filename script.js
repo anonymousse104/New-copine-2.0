@@ -20,7 +20,7 @@ const contenueSemaine = [
         "Quoi de mieux que de commencer par la musique qui a marqué la première story d’officialisation de notre couple.",
     },
     note: "Un petit conseil mon cœur : Ne te fatigue pas trop aujourd’hui, tu risques d’être fatiguée à cause de tes règles. Bon courage mon amour et si tu as des tâches tu as un homme qui peut te les faire.",
-    image: "./images/IMG_0221.jpeg",
+    image: "./images/IMG_7003.jpg",
     note_img: "Notre première photo ensemble",
   },
   {
