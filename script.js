@@ -133,39 +133,17 @@ let compteurClicsCD = 0; // Le compteur qui mémorisera le nombre de clics
 
 // Fonction qui initialise ou récupère la date de début
 function initialiserOuRecupererDateDebut() {
-  const dateStockee = localStorage.getItem("dateDebut");
-  let dateDebut;
-  if (dateStockee === null) {
-    dateDebut = new Date();
-    // On recule la date d'un jour (Voyage dans le temps !)
-    dateDebut.setDate(dateDebut.getDate() - 1);
-    localStorage.setItem("dateDebut", dateDebut.toISOString());
-  } else {
-    dateDebut = new Date(dateStockee);
-  }
-  return dateDebut;
+  return new Date(2026, 9, 10, 8, 0, 0); // Mois 9 = octobre en JS (0=janvier)
 }
 
-// Fonction qui calcule le jour actuel
+// Fonction qui calcule automatiquement le jour actuel
 function calculerJourActuel(dateDebut) {
   const dateActuelle = new Date();
-  // 1. On crée le point de repère à 8h le jour de sa première connexion
-  const reference = new Date(dateDebut);
-  reference.setHours(8, 0, 0, 0);
+  const differenceEnMs = dateActuelle - dateDebut;
+  const joursEcoules = Math.floor(differenceEnMs / (1000 * 60 * 60 * 24));
 
-  // 2. Si elle s'est connectée pour la première fois avant 8h du matin,
-  // on décale la référence de 24h en arrière pour ne pas avoir de nombre négatif
-  if (dateDebut.getHours() < 8) {
-    reference.setDate(reference.getDate() - 1);
-  }
-
-  // 3. Différence entre maintenant et ce repère de 8h
-  const differenceEnMs = dateActuelle - reference;
-  const jourEcoules = Math.floor(differenceEnMs / (1000 * 60 * 60 * 24));
-
-  // 4. On démarre à 1 et on plafonne à 7
-  const numeroJour = Math.min(jourEcoules + 1, 7);
-  return numeroJour;
+  // Jour 1 minimum, Jour 7 maximum
+  return Math.min(Math.max(joursEcoules + 1, 1), 7);
 }
 
 // Fonction qui permet de changer de jour
