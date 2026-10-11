@@ -36,7 +36,7 @@ const contenueSemaine = [
     },
     note: "Courage mon amour, tu vas surmonter tous tes défis et te surpasser. Cette journée va bien se passer, car tu as un chéri sur qui compter !",
     image: "./images/IMG_0299.jpeg",
-    note_img: "Lanzarote - été 2026",
+    note_img: "Labenne - été 2026",
   },
   {
     jour: 3,
@@ -51,7 +51,7 @@ const contenueSemaine = [
     },
     note: "Petit conseil : Si jamais tu as besoin de quelqu’un ou quelque chose afin de te sentir mieux ou pour quelconque raison, je suis là pour toi cœur !",
     image: "./images/IMG_0352.jpeg",
-    note_img: "Photo en amoureux à Lanzarote - été 2026",
+    note_img: "Photo en amoureux à Labenne - été 2026",
   },
   {
     jour: 4,
