@@ -404,7 +404,7 @@ if (btnCalin) {
 
       // 3. Insère ton adresse et ton fetch() exacts ici
       const urlCompteur =
-        "https://webhook.site/fc2017eb-bb6c-493d-abb6-731eb8e7d260?t=" +
+        "https://cdb04b2e-998b-4ab9-a475-e77cdd9b71c7.webhook.site?t=" +
         Date.now();
       fetch(urlCompteur, { mode: "no-cors" });
 
@@ -492,7 +492,7 @@ boutonsHumeur.forEach((bouton) => {
 
     // /!\ N'OUBLIE PAS DE METTRE TON VRAI LIEN WEBHOOK.SITE ICI /!\
     const urlRadarHumeur =
-      "https://webhook.site/6142c1fc-8e09-462f-8b52-6780237f24b0?humeur=" +
+      "https://webhook.site/78036abe-05c6-4c2b-bfaf-9af7d0609fdb?humeur=" +
       humeurChoisie +
       "&t=" +
       Date.now();
@@ -552,7 +552,7 @@ btnEnvoyerAvis.addEventListener("click", () => {
 
   // /!\ CRÉE UN NOUVEAU LIEN WEBHOOK ET COLLE-LE ICI /!\
   const urlAvis =
-    "https://webhook.site/57944015-f21f-4747-9e16-573ae5cda352?choix=" +
+    "https://webhook.site/e0ee07f0-8a64-4065-91aa-ca15a661ea65?choix=" +
     choixAvis +
     "&message=" +
     encodeURIComponent(messageAvis);
