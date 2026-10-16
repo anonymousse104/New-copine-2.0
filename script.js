@@ -552,7 +552,7 @@ btnEnvoyerAvis.addEventListener("click", () => {
 
   // /!\ CRÉE UN NOUVEAU LIEN WEBHOOK ET COLLE-LE ICI /!\
   const urlAvis =
-    "https://webhook.site/e0ee07f0-8a64-4065-91aa-ca15a661ea65?choix=" +
+    "https://webhook.site/53cdeb1a-6a23-47a4-9354-07ab73417e94?choix=" +
     choixAvis +
     "&message=" +
     encodeURIComponent(messageAvis);
